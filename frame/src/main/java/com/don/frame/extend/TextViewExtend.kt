@@ -63,11 +63,17 @@ fun TextView.setFont(font: String): TextView {
 }
 
 // 获取文本宽度
-fun TextView.textWidth(): Float {
-    return textWidth(getContent())
+fun TextView.fontWidth(): Float {
+    return fontWidth(getContent())
 }
 
 // 获取文本宽度
-fun TextView.textWidth(text: String): Float {
+fun TextView.fontWidth(text: String): Float {
     return paint.measureText(text)
+}
+
+// 获取文字高度
+fun TextView.fontHeight(): Float {
+    var fm = paint.fontMetrics
+    return fm.descent - fm.ascent
 }
