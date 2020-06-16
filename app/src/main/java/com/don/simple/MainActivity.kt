@@ -1,12 +1,22 @@
 package com.don.simple
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import com.don.frame.core.base.activity.BaseStatusBarActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseStatusBarActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun getContentView(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun initListener() {
+    }
+
+    override fun init() {
+
+    }
+
+    override fun setStatusBarColorFinish() {
+        super.setStatusBarColorFinish()
+        setStatusBarTransparent()
     }
 }
