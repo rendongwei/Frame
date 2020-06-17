@@ -12,6 +12,10 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
-
+        var fragment = MainFragment()
+        var b = supportFragmentManager.beginTransaction()
+        b.add(R.id.mLayoutContainer, fragment)
+        b.show(fragment)
+        b.commitAllowingStateLoss()
     }
 }
