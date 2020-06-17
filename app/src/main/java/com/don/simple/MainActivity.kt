@@ -14,9 +14,4 @@ class MainActivity : BaseStatusBarActivity() {
     override fun init() {
 
     }
-
-    override fun setStatusBarColorFinish() {
-        super.setStatusBarColorFinish()
-        setStatusBarTransparent()
-    }
 }

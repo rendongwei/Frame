@@ -13,10 +13,14 @@ abstract class BaseStatusBarActivity : BaseActivity() {
         return R.color.white
     }
 
+    open fun isFitsSystemWindows(): Boolean {
+        return true
+    }
+
     open fun setStatusBarColorFinish() {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        mContentView.fitsSystemWindows = true
+        mContentView.fitsSystemWindows = isFitsSystemWindows()
         super.onCreate(savedInstanceState)
         var color = color(getStatusBarColor())
         StatusBarUtil.setColorNoTranslucent(mActivity, color)
@@ -28,7 +32,7 @@ abstract class BaseStatusBarActivity : BaseActivity() {
         setStatusBarColorFinish()
     }
 
-    private fun isLightColor(@ColorRes color: Int): Boolean {
+    fun isLightColor(@ColorRes color: Int): Boolean {
         val darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255
         if (darkness < 0.5) {
             return true
@@ -38,5 +42,13 @@ abstract class BaseStatusBarActivity : BaseActivity() {
 
     fun setStatusBarTransparent() {
         StatusBarUtil.setTransparent(mActivity)
+    }
+
+    fun setLightMode() {
+        StatusBarUtil.setLightMode(mActivity)
+    }
+
+    fun setDarkMode() {
+        StatusBarUtil.setDarkMode(mActivity)
     }
 }
