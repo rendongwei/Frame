@@ -1,6 +1,7 @@
 package com.don.simple
 
 import com.don.frame.core.base.activity.BaseStatusBarActivity
+import com.don.frame.util.DeviceUtil
 
 class MainActivity : BaseStatusBarActivity() {
 
@@ -17,5 +18,6 @@ class MainActivity : BaseStatusBarActivity() {
         b.add(R.id.mLayoutContainer, fragment)
         b.show(fragment)
         b.commitAllowingStateLoss()
+        DeviceUtil.isMIUI()
     }
 }
