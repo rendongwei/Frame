@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 
 // 获取显示指标
@@ -44,6 +45,9 @@ fun Fragment.color(color: String) = context!!.color(color)
 
 // 获取drawable
 fun Fragment.drawable(@DrawableRes id: Int) = context!!.drawable(id)
+
+// 获取string
+fun Fragment.string(@StringRes id: Int) = getString(id)
 
 // 获取layout
 fun Fragment.layout(@LayoutRes id: Int) = context!!.layout(id)

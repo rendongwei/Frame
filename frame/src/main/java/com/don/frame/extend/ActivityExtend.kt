@@ -4,6 +4,7 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 
 // 获取显示指标
@@ -44,6 +45,9 @@ fun AppCompatActivity.color(color: String) = baseContext.color(color)
 
 // 获取drawable
 fun AppCompatActivity.drawable(@DrawableRes id: Int) = baseContext.drawable(id)
+
+// 获取string
+fun AppCompatActivity.string(@StringRes id: Int) = baseContext.getString(id)
 
 // 获取layout
 fun AppCompatActivity.layout(@LayoutRes id: Int) = baseContext.layout(id)
