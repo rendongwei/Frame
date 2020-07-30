@@ -13,6 +13,8 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.don.frame.data.MemoryCache
+import com.don.frame.data.SharedPreference
 
 // 获取显示指标
 fun Context.getDisplayMetrics(): DisplayMetrics = resources.displayMetrics
@@ -62,6 +64,12 @@ fun Context.layout(@LayoutRes id: Int): View = layout(id, null, false)
 // 获取layout
 fun Context.layout(@LayoutRes id: Int, parent: ViewGroup?, attachToRoot: Boolean): View =
     LayoutInflater.from(this).inflate(id, parent, attachToRoot)
+
+// 获取SharedPreference
+fun Context.sharedPreference() = SharedPreference.getInstance()
+
+// 获取memoryCache
+fun Context.memoryCache() = MemoryCache.getInstance()
 
 // context转activity
 fun <T : AppCompatActivity> Context.toActivity(): T {

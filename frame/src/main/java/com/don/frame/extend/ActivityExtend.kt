@@ -6,6 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import com.don.frame.data.MemoryCache
+import com.don.frame.data.SharedPreference
 
 // 获取显示指标
 fun AppCompatActivity.getDisplayMetrics() = baseContext.getDisplayMetrics()
@@ -55,3 +57,9 @@ fun AppCompatActivity.layout(@LayoutRes id: Int) = baseContext.layout(id)
 // 获取layout
 fun AppCompatActivity.layout(@LayoutRes id: Int, parent: ViewGroup?, attachToRoot: Boolean) =
     baseContext.layout(id, parent, attachToRoot)
+
+// 获取SharedPreference
+fun AppCompatActivity.sharedPreference() = SharedPreference.getInstance()
+
+// 获取memoryCache
+fun AppCompatActivity.memoryCache() = MemoryCache.getInstance()

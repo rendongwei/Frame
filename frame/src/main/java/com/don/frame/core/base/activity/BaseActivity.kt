@@ -17,6 +17,10 @@ abstract class BaseActivity : AppCompatActivity() {
     protected var mSaveInstanceState: Bundle? = null
     protected val mContentView: View by lazy { getCustomContentView() ?: layout(getContentView()) }
 
+    companion object {
+        val TAG = "Activity"
+    }
+
     @LayoutRes
     abstract fun getContentView(): Int
 
@@ -38,5 +42,6 @@ abstract class BaseActivity : AppCompatActivity() {
         initListener()
         init()
     }
+
 
 }

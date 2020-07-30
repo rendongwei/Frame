@@ -6,6 +6,8 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import com.don.frame.data.MemoryCache
+import com.don.frame.data.SharedPreference
 
 // 获取显示指标
 fun Fragment.getDisplayMetrics() = context!!.getDisplayMetrics()
@@ -55,3 +57,9 @@ fun Fragment.layout(@LayoutRes id: Int) = context!!.layout(id)
 // 获取layout
 fun Fragment.layout(@LayoutRes id: Int, parent: ViewGroup?, attachToRoot: Boolean) =
     context!!.layout(id, parent, attachToRoot)
+
+// 获取SharedPreference
+fun Fragment.sharedPreference() = SharedPreference.getInstance()
+
+// 获取memoryCache
+fun Fragment.memoryCache() = MemoryCache.getInstance()

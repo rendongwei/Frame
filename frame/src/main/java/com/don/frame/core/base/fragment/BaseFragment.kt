@@ -14,11 +14,14 @@ import com.don.frame.util.LogUtil
 
 abstract class BaseFragment : Fragment() {
 
-    private val TAG = "Fragment"
     protected lateinit var mApplicationContext: Context
     protected lateinit var mActivity: AppCompatActivity
     protected lateinit var mContext: Context
     protected var mContentView: View? = null
+
+    companion object {
+        val TAG = "Fragment"
+    }
 
     @LayoutRes
     abstract fun getContentView(): Int
