@@ -9,9 +9,10 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun initListener() {
+
     }
 
     override fun init() {
-
+        println(AppManager.getInstance().mApplicationContext.externalCacheDir!!.path)
     }
 }

@@ -7,9 +7,9 @@ import com.don.frame.util.LogUtil
 
 class SharedPreference private constructor() {
 
-    val TAG = "SharedPreference"
-
     companion object {
+
+        val TAG = "SharedPreference"
 
         @Volatile
         private var mSharedPreference: SharedPreference? = null
@@ -25,6 +25,7 @@ class SharedPreference private constructor() {
         return PreferenceManager.getDefaultSharedPreferences(context)
     }
 
+    // 添加数据
     fun put(context: Context, key: String, value: Any) {
         if (key.isNullOrBlank()) {
             return
@@ -43,6 +44,7 @@ class SharedPreference private constructor() {
         }
     }
 
+    // 获取数据
     inline fun <reified T> get(context: Context, key: String): T? {
         if (key.isNullOrBlank()) {
             return null
@@ -70,6 +72,7 @@ class SharedPreference private constructor() {
         return null
     }
 
+    // 删除某个数据
     fun remove(context: Context, key: String) {
         if (key.isNullOrBlank()) {
             return
@@ -81,6 +84,7 @@ class SharedPreference private constructor() {
         }
     }
 
+    // 清空所有数据
     fun clear(context: Context) {
         var sp = getSharedPreferences(context)
         sp?.apply {

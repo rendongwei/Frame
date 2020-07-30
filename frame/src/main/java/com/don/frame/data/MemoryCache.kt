@@ -5,10 +5,11 @@ import com.don.frame.util.LogUtil
 
 class MemoryCache private constructor() {
 
-    val TAG = "MemoryCache"
     private val mLruCaches = hashMapOf<String, LruCache<String, Any>>()
 
     companion object {
+
+        val TAG = "MemoryCache"
 
         @Volatile
         private var mMemoryCache: MemoryCache? = null
@@ -20,18 +21,14 @@ class MemoryCache private constructor() {
         }
     }
 
-    /**
-     * 根据数据类型创建LruCache
-     */
+    // 根据数据类型创建LruCache
     private fun createLruCache(): LruCache<String, Any> {
         var maxMemory = (Runtime.getRuntime().maxMemory() / 1024).toInt()
         var cacheMemory = maxMemory / 8
         return LruCache(cacheMemory)
     }
 
-    /**
-     * 获取对应类型的LruCache
-     */
+    // 获取对应类型的LruCache
     fun getLruCache(type: String): LruCache<String, Any> {
         if (!mLruCaches.containsKey(type)) {
             mLruCaches[type] = createLruCache()
@@ -40,9 +37,7 @@ class MemoryCache private constructor() {
         return mLruCaches[type]!!
     }
 
-    /**
-     * 添加数据
-     */
+    // 添加数据
     inline fun <reified T> put(key: String, value: T) {
         if (key.isNullOrBlank()) {
             return
@@ -53,9 +48,7 @@ class MemoryCache private constructor() {
         LogUtil.log(TAG, "put: ${cls.name} $key = $value")
     }
 
-    /**
-     * 获取数据
-     */
+    // 获取数据
     inline fun <reified T> get(key: String): T? {
         if (key.isNullOrBlank()) {
             return null
@@ -69,9 +62,7 @@ class MemoryCache private constructor() {
         return value
     }
 
-    /**
-     * 删除某个数据
-     */
+    // 删除某个数据
     inline fun <reified T> remove(key: String) {
         if (key.isNullOrBlank()) {
             return
@@ -82,9 +73,7 @@ class MemoryCache private constructor() {
         LogUtil.log(TAG, "remove: ${cls.name} $key")
     }
 
-    /**
-     * 清空某种类型的数据
-     */
+    // 清空某种类型的数据
     inline fun <reified T> clear() {
         var cls = T::class.java
         var cache = getLruCache(cls.canonicalName!!)
@@ -92,9 +81,7 @@ class MemoryCache private constructor() {
         LogUtil.log(TAG, "clear: ${cls.name}")
     }
 
-    /**
-     * 清空所有数据
-     */
+    // 清空所有数据
     fun clearAll() {
         for ((k, v) in mLruCaches) {
             v.evictAll()

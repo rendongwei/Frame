@@ -6,7 +6,7 @@ import android.os.Bundle
 import com.don.frame.core.base.activity.BaseActivity
 import com.don.frame.util.LogUtil
 
-class BaseApplication : Application() {
+open class BaseApplication : Application() {
 
     companion object {
         val TAG = "Application"
