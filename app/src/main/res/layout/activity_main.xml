@@ -3,12 +3,18 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:id="@+id/mLayoutContainer"
         android:layout_height="match_parent"
         android:background="#ff66"
         tools:context=".MainActivity"
+        android:gravity="center"
         android:orientation="vertical">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-              android:id="@+id/mTvText"/>
+    <com.don.frame.widget.layout.DLinearLayout
+            android:id="@+id/mLayoutContainer"
+            android:layout_width="200dip"
+            android:orientation="vertical"
+            android:layout_height="200dip"
+            android:background="@color/white">
+    </com.don.frame.widget.layout.DLinearLayout>
+
 </LinearLayout>

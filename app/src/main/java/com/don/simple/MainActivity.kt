@@ -1,6 +1,8 @@
 package com.don.simple
 
 import com.don.frame.core.base.activity.BaseStatusBarActivity
+import com.don.frame.extend.color
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseStatusBarActivity() {
 
@@ -13,6 +15,6 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
-        println(AppManager.getInstance().mApplicationContext.externalCacheDir!!.path)
+        mLayoutContainer.onlyShowTopDivider(20,20,2,color("#FF0124"))
     }
 }
