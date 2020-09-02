@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Layout">
+        <attr name="android:maxWidth"/>
+        <attr name="android:maxHeight"/>
+        <attr name="android:minWidth"/>
+        <attr name="android:minHeight"/>
+        <attr name="bottomDividerHeight" format="dimension"/>
+        <attr name="bottomDividerColor" format="color|reference"/>
+        <attr name="bottomDividerInsetLeft" format="dimension"/>
+        <attr name="bottomDividerInsetRight" format="dimension"/>
+        <attr name="topDividerHeight" format="dimension"/>
+        <attr name="topDividerColor" format="color|reference"/>
+        <attr name="topDividerInsetLeft" format="dimension"/>
+        <attr name="topDividerInsetRight" format="dimension"/>
+        <attr name="leftDividerWidth" format="dimension"/>
+        <attr name="leftDividerColor" format="color|reference"/>
+        <attr name="leftDividerInsetTop" format="dimension"/>
+        <attr name="leftDividerInsetBottom" format="dimension"/>
+        <attr name="rightDividerWidth" format="dimension"/>
+        <attr name="rightDividerColor" format="color|reference"/>
+        <attr name="rightDividerInsetTop" format="dimension"/>
+        <attr name="rightDividerInsetBottom" format="dimension"/>
+        <attr name="radius"/>
+        <attr name="borderColor"/>
+        <attr name="borderWidth"/>
+        <attr name="outerNormalColor" format="color|reference"/>
+        <attr name="hideRadiusSide" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="bottom" value="3"/>
+            <enum name="left" value="4"/>
+        </attr>
+        <attr name="showBorderOnlyBeforeL" format="boolean"/>
+        <attr name="shadowElevation" format="dimension"/>
+        <attr name="useThemeGeneralShadowElevation" format="boolean"/>
+        <attr name="shadowAlpha" format="float"/>
+        <attr name="outlineInsetTop" format="dimension"/>
+        <attr name="outlineInsetLeft" format="dimension"/>
+        <attr name="outlineInsetRight" format="dimension"/>
+        <attr name="outlineInsetBottom" format="dimension"/>
+        <attr name="outlineExcludePadding" format="boolean"/>
+    </declare-styleable>
+</resources>

@@ -51,6 +51,9 @@ interface ILayout {
     // 设置圆角半径
     fun setRadius(radius: Int)
 
+    // 设置圆角半径和隐藏圆角方向
+    fun setRadius(radius: Int, @HideRadiusSide hideRadiusSide: Int)
+
     // 获取圆角半径
     fun getRadius(): Int
 
