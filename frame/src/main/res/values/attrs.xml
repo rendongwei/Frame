@@ -21,9 +21,9 @@
         <attr name="rightDividerColor" format="color|reference"/>
         <attr name="rightDividerInsetTop" format="dimension"/>
         <attr name="rightDividerInsetBottom" format="dimension"/>
-        <attr name="radius"/>
-        <attr name="borderColor"/>
-        <attr name="borderWidth"/>
+        <attr name="radius" format="dimension"/>
+        <attr name="borderColor" format="color|reference"/>
+        <attr name="borderWidth" format="dimension"/>
         <attr name="outerNormalColor" format="color|reference"/>
         <attr name="hideRadiusSide" format="enum">
             <enum name="none" value="0"/>
@@ -34,7 +34,7 @@
         </attr>
         <attr name="showBorderOnlyBeforeL" format="boolean"/>
         <attr name="shadowElevation" format="dimension"/>
-        <attr name="useThemeGeneralShadowElevation" format="boolean"/>
+        <attr name="shadowColor" format="color|reference"/>
         <attr name="shadowAlpha" format="float"/>
         <attr name="outlineInsetTop" format="dimension"/>
         <attr name="outlineInsetLeft" format="dimension"/>

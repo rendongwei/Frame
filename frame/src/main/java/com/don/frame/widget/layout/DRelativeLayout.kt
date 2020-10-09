@@ -3,9 +3,9 @@ package com.don.frame.widget.layout
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 
-class DLinearLayout : LinearLayout, ILayout {
+class DRelativeLayout : FrameLayout, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 

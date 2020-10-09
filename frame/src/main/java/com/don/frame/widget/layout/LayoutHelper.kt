@@ -78,12 +78,12 @@ class LayoutHelper : ILayout {
 
     constructor(context: Context?, owner: View) : this(context, null, owner)
 
-    constructor(context: Context?, attrs: AttributeSet?, owner: View) : this(context, null, 0, owner)
+    constructor(context: Context?, attrs: AttributeSet?, owner: View) : this(context, attrs, 0, owner)
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, owner: View) : this(
         context,
-        null,
-        0,
+        attrs,
+        defStyleAttr,
         0,
         owner
     )
@@ -104,14 +104,40 @@ class LayoutHelper : ILayout {
             mHeightLimit = typedArray.getDimensionPixelSize(R.styleable.Layout_android_minHeight, 0)
 
             mBottomDividerHeight = typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerHeight, 0)
-            mBottomDividerColor = typedArray.getColor(R.styleable.Layout_bottomDividerHeight, 0)
-            mBottomDividerInsetLeft =  typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetLeft, 0)
-            mBottomDividerInsetRight =  typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetRight, 0)
+            mBottomDividerColor = typedArray.getColor(R.styleable.Layout_bottomDividerColor, 0)
+            mBottomDividerInsetLeft = typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetLeft, 0)
+            mBottomDividerInsetRight = typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetRight, 0)
 
-            mTopDividerHeight = typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerHeight, 0)
-            mBottomDividerColor = typedArray.getColor(R.styleable.Layout_bottomDividerHeight, 0)
-            mBottomDividerInsetLeft =  typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetLeft, 0)
-            mBottomDividerInsetRight =  typedArray.getDimensionPixelSize(R.styleable.Layout_bottomDividerInsetRight, 0)
+            mTopDividerHeight = typedArray.getDimensionPixelSize(R.styleable.Layout_topDividerHeight, 0)
+            mTopDividerColor = typedArray.getColor(R.styleable.Layout_topDividerColor, 0)
+            mTopDividerInsetLeft = typedArray.getDimensionPixelSize(R.styleable.Layout_topDividerInsetLeft, 0)
+            mTopDividerInsetRight = typedArray.getDimensionPixelSize(R.styleable.Layout_topDividerInsetRight, 0)
+
+            mLeftDividerWidth = typedArray.getDimensionPixelSize(R.styleable.Layout_leftDividerWidth, 0)
+            mLeftDividerColor = typedArray.getColor(R.styleable.Layout_leftDividerColor, 0)
+            mLeftDividerInsetTop = typedArray.getDimensionPixelSize(R.styleable.Layout_leftDividerInsetTop, 0)
+            mLeftDividerInsetBottom = typedArray.getDimensionPixelSize(R.styleable.Layout_leftDividerInsetBottom, 0)
+
+            mRightDividerWidth = typedArray.getDimensionPixelSize(R.styleable.Layout_rightDividerWidth, 0)
+            mRightDividerColor = typedArray.getColor(R.styleable.Layout_rightDividerColor, 0)
+            mRightDividerInsetTop = typedArray.getDimensionPixelSize(R.styleable.Layout_rightDividerInsetTop, 0)
+            mRightDividerInsetBottom = typedArray.getDimensionPixelSize(R.styleable.Layout_rightDividerInsetBottom, 0)
+
+            mRadius = typedArray.getDimensionPixelSize(R.styleable.Layout_radius, 0)
+            mBorderColor = typedArray.getColor(R.styleable.Layout_borderColor, 0)
+            mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.Layout_borderWidth, 1)
+            mOuterNormalColor = typedArray.getColor(R.styleable.Layout_outerNormalColor, 0)
+            mHideRadiusSide = typedArray.getInt(R.styleable.Layout_hideRadiusSide, ILayout.HIDE_RADIUS_SIDE_NONE)
+            mIsShowBorderOnlyBeforeL = typedArray.getBoolean(R.styleable.Layout_showBorderOnlyBeforeL, true)
+            mShadowElevation = typedArray.getDimensionPixelSize(R.styleable.Layout_shadowElevation, 0)
+            mShadowColor = typedArray.getColor(R.styleable.Layout_shadowColor, Color.BLACK)
+            mShadowAlpha = typedArray.getFloat(R.styleable.Layout_shadowAlpha, 0.0f)
+
+            mOutlineInsetTop = typedArray.getDimensionPixelSize(R.styleable.Layout_outlineInsetTop, 0)
+            mOutlineInsetLeft = typedArray.getDimensionPixelSize(R.styleable.Layout_outlineInsetLeft, 0)
+            mOutlineInsetRight = typedArray.getDimensionPixelSize(R.styleable.Layout_outlineInsetRight, 0)
+            mOutlineInsetBottom = typedArray.getDimensionPixelSize(R.styleable.Layout_outlineInsetBottom, 0)
+            mIsOutlineExcludePadding = typedArray.getBoolean(R.styleable.Layout_outlineExcludePadding, false)
 
             typedArray.recycle()
         }
@@ -735,9 +761,9 @@ class LayoutHelper : ILayout {
     }
 
     private fun isRadiusWithSideHidden(): Boolean {
-        return (mRadius === RADIUS_OF_HALF_VIEW_HEIGHT ||
-                mRadius === RADIUS_OF_HALF_VIEW_WIDTH ||
-                mRadius > 0) && mHideRadiusSide !== ILayout.HIDE_RADIUS_SIDE_NONE
+        return (mRadius == RADIUS_OF_HALF_VIEW_HEIGHT ||
+                mRadius == RADIUS_OF_HALF_VIEW_WIDTH ||
+                mRadius > 0) && mHideRadiusSide != ILayout.HIDE_RADIUS_SIDE_NONE
     }
 
     private fun getRealRadius(): Int {
