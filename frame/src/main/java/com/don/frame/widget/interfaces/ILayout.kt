@@ -1,4 +1,4 @@
-package com.don.frame.widget.layout
+package com.don.frame.widget.interfaces
 
 import androidx.annotation.ColorInt
 import androidx.annotation.IntDef

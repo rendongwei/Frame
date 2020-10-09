@@ -1,4 +1,4 @@
-package com.don.frame.widget.layout
+package com.don.frame.widget.helper
 
 import android.content.Context
 import android.graphics.*
@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
 import com.don.frame.R
+import com.don.frame.widget.interfaces.ILayout
 import java.lang.ref.WeakReference
 
 
@@ -127,7 +128,9 @@ class LayoutHelper : ILayout {
             mBorderColor = typedArray.getColor(R.styleable.Layout_borderColor, 0)
             mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.Layout_borderWidth, 1)
             mOuterNormalColor = typedArray.getColor(R.styleable.Layout_outerNormalColor, 0)
-            mHideRadiusSide = typedArray.getInt(R.styleable.Layout_hideRadiusSide, ILayout.HIDE_RADIUS_SIDE_NONE)
+            mHideRadiusSide = typedArray.getInt(R.styleable.Layout_hideRadiusSide,
+                ILayout.HIDE_RADIUS_SIDE_NONE
+            )
             mIsShowBorderOnlyBeforeL = typedArray.getBoolean(R.styleable.Layout_showBorderOnlyBeforeL, true)
             mShadowElevation = typedArray.getDimensionPixelSize(R.styleable.Layout_shadowElevation, 0)
             mShadowColor = typedArray.getColor(R.styleable.Layout_shadowColor, Color.BLACK)

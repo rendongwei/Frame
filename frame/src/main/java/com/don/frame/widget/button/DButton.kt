@@ -1,13 +1,13 @@
-package com.don.frame.widget.layout
+package com.don.frame.widget.button
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.widget.FrameLayout
+import android.widget.Button
 import com.don.frame.widget.helper.LayoutHelper
 import com.don.frame.widget.interfaces.ILayout
 
-class DRelativeLayout : FrameLayout, ILayout {
+class DButton : Button, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 

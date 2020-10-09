@@ -9,12 +9,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-    <com.don.frame.widget.layout.DLinearLayout
+    <com.don.frame.widget.button.DButton
             android:id="@+id/mLayoutContainer"
             android:layout_width="200dip"
             android:orientation="vertical"
             android:layout_height="200dip"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="按时打算按时"
             android:background="#FFFFFF">
-    </com.don.frame.widget.layout.DLinearLayout>
+    </com.don.frame.widget.button.DButton>
 
 </LinearLayout>
