@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import com.don.frame.widget.helper.LayoutHelper
 import com.don.frame.widget.interfaces.ILayout
 
-class DRelativeLayout : FrameLayout, ILayout {
+open class DRelativeLayout : FrameLayout, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 

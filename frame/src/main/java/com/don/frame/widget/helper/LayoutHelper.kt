@@ -18,34 +18,34 @@ class LayoutHelper : ILayout {
     private val RADIUS_OF_HALF_VIEW_HEIGHT = -1
     private val RADIUS_OF_HALF_VIEW_WIDTH = -2
 
-    private var mWidthLimit = 0
-    private var mHeightLimit = 0
-    private var mWidthMini = 0
-    private var mHeightMini = 0
+    private var mWidthLimit: Int = 0
+    private var mHeightLimit: Int = 0
+    private var mWidthMini: Int = 0
+    private var mHeightMini: Int = 0
 
-    private var mTopDividerHeight = 0
-    private var mTopDividerInsetLeft = 0
-    private var mTopDividerInsetRight = 0
+    private var mTopDividerHeight: Int = 0
+    private var mTopDividerInsetLeft: Int = 0
+    private var mTopDividerInsetRight: Int = 0
     private var mTopDividerColor: Int = 0
-    private var mTopDividerAlpha = 255
+    private var mTopDividerAlpha: Int = 255
 
-    private var mBottomDividerHeight = 0
-    private var mBottomDividerInsetLeft = 0
-    private var mBottomDividerInsetRight = 0
+    private var mBottomDividerHeight: Int = 0
+    private var mBottomDividerInsetLeft: Int = 0
+    private var mBottomDividerInsetRight: Int = 0
     private var mBottomDividerColor: Int = 0
-    private var mBottomDividerAlpha = 255
+    private var mBottomDividerAlpha: Int = 255
 
-    private var mLeftDividerWidth = 0
-    private var mLeftDividerInsetTop = 0
-    private var mLeftDividerInsetBottom = 0
+    private var mLeftDividerWidth: Int = 0
+    private var mLeftDividerInsetTop: Int = 0
+    private var mLeftDividerInsetBottom: Int = 0
     private var mLeftDividerColor: Int = 0
-    private var mLeftDividerAlpha = 255
+    private var mLeftDividerAlpha: Int = 255
 
-    private var mRightDividerWidth = 0
-    private var mRightDividerInsetTop = 0
-    private var mRightDividerInsetBottom = 0
+    private var mRightDividerWidth: Int = 0
+    private var mRightDividerInsetTop: Int = 0
+    private var mRightDividerInsetBottom: Int = 0
     private var mRightDividerColor: Int = 0
-    private var mRightDividerAlpha = 255
+    private var mRightDividerAlpha: Int = 255
     private var mDividerPaint: Paint? = null
 
     private var mClipPaint: Paint? = null
@@ -58,7 +58,7 @@ class LayoutHelper : ILayout {
     private var mBorderRect: RectF? = null
     private var mBorderColor: Int = 0
     private var mBorderWidth: Int = 1
-    private var mOuterNormalColor = 0
+    private var mOuterNormalColor: Int = 0
     private var mOwner: WeakReference<View>? = null
     private var mIsOutlineExcludePadding: Boolean = false
     private var mPath: Path = Path()
@@ -68,10 +68,10 @@ class LayoutHelper : ILayout {
     private var mShadowAlpha: Float = 0.0f
     private var mShadowColor: Int = Color.BLACK
 
-    private var mOutlineInsetLeft = 0
-    private var mOutlineInsetRight = 0
-    private var mOutlineInsetTop = 0
-    private var mOutlineInsetBottom = 0
+    private var mOutlineInsetLeft: Int = 0
+    private var mOutlineInsetRight: Int = 0
+    private var mOutlineInsetTop: Int = 0
+    private var mOutlineInsetBottom: Int = 0
 
     companion object {
         fun useFeature() = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP
@@ -128,7 +128,8 @@ class LayoutHelper : ILayout {
             mBorderColor = typedArray.getColor(R.styleable.Layout_borderColor, 0)
             mBorderWidth = typedArray.getDimensionPixelSize(R.styleable.Layout_borderWidth, 1)
             mOuterNormalColor = typedArray.getColor(R.styleable.Layout_outerNormalColor, 0)
-            mHideRadiusSide = typedArray.getInt(R.styleable.Layout_hideRadiusSide,
+            mHideRadiusSide = typedArray.getInt(
+                R.styleable.Layout_hideRadiusSide,
                 ILayout.HIDE_RADIUS_SIDE_NONE
             )
             mIsShowBorderOnlyBeforeL = typedArray.getBoolean(R.styleable.Layout_showBorderOnlyBeforeL, true)
