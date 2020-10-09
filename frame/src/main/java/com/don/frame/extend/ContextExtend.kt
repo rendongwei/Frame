@@ -7,6 +7,7 @@ import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.don.frame.data.MemoryCache
 import com.don.frame.data.SharedPreference
+import com.don.frame.util.ToastUtil
 
 // 获取显示指标
 fun Context.getDisplayMetrics(): DisplayMetrics = resources.displayMetrics
@@ -64,6 +66,10 @@ fun Context.layout(@LayoutRes id: Int): View = layout(id, null, false)
 // 获取layout
 fun Context.layout(@LayoutRes id: Int, parent: ViewGroup?, attachToRoot: Boolean): View =
     LayoutInflater.from(this).inflate(id, parent, attachToRoot)
+
+// 显示toast
+fun Context.showToast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) =
+    ToastUtil.showToast(this, text, duration)
 
 // 获取SharedPreference
 fun Context.sharedPreference() = SharedPreference.getInstance()

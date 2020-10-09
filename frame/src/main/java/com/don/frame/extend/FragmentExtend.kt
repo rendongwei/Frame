@@ -1,6 +1,7 @@
 package com.don.frame.extend
 
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
@@ -8,6 +9,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.don.frame.data.MemoryCache
 import com.don.frame.data.SharedPreference
+import com.don.frame.util.ToastUtil
 
 // 获取显示指标
 fun Fragment.getDisplayMetrics() = context!!.getDisplayMetrics()
@@ -57,6 +59,10 @@ fun Fragment.layout(@LayoutRes id: Int) = context!!.layout(id)
 // 获取layout
 fun Fragment.layout(@LayoutRes id: Int, parent: ViewGroup?, attachToRoot: Boolean) =
     context!!.layout(id, parent, attachToRoot)
+
+// 显示toast
+fun Fragment.showToast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) =
+    ToastUtil.showToast(context!!, text, duration)
 
 // 获取SharedPreference
 fun Fragment.sharedPreference() = SharedPreference.getInstance()

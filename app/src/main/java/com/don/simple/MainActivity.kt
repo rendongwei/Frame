@@ -13,5 +13,6 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
+
     }
 }
