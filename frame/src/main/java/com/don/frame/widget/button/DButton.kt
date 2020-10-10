@@ -7,7 +7,7 @@ import android.widget.Button
 import com.don.frame.widget.helper.LayoutHelper
 import com.don.frame.widget.interfaces.ILayout
 
-class DButton : Button, ILayout {
+open class DButton : Button, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 

@@ -1,11 +1,11 @@
-package com.don.frame.widget.layout
+package com.don.frame.widget.button
 
 import android.content.Context
 import android.util.AttributeSet
 import com.don.frame.widget.helper.ShapeHelper
 import com.don.frame.widget.interfaces.IShape
 
-class ShapeLinearLayout : DLinearLayout, IShape {
+class ShapeButton : DButton, IShape {
 
     private var mShapeHelper: ShapeHelper
 

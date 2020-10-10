@@ -1,17 +1,21 @@
 package com.don.frame.widget.helper
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.StateListDrawable
 import android.os.Build
+import android.util.AttributeSet
 import android.view.View
 import androidx.annotation.ColorInt
+import com.don.frame.R
 import com.don.frame.widget.interfaces.IShape
 import java.lang.ref.WeakReference
 
-class ShapeHelper(owner: View) : IShape {
+class ShapeHelper : IShape {
 
+    private var mContext: Context? = null
     private var mOwner: WeakReference<View>? = null
 
     private var mNormalLeftTopRadius: Int = 0
@@ -46,8 +50,58 @@ class ShapeHelper(owner: View) : IShape {
     private var mPressedDashWidth: Int = 0
     private var mPressedDashGap: Int = 0
 
-    init {
+    constructor(context: Context?, owner: View) : this(context, null, owner)
+
+    constructor(context: Context?, attrs: AttributeSet?, owner: View) : this(context, attrs, 0, owner)
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, owner: View) : this(
+        context,
+        attrs,
+        defStyleAttr,
+        0,
+        owner
+    )
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int, owner: View) {
+        mContext = context
         mOwner = WeakReference(owner)
+        if (attrs != null || defStyleAttr != 0 || defStyleRes != 0) {
+            var typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.Shape, defStyleAttr, defStyleRes)
+            mNormalLeftTopRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_normalLeftTopRadius, 0)
+            mNormalRightTopRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_normalRightTopRadius, 0)
+            mNormalLeftBottomRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_normalLeftBottomRadius, 0)
+            mNormalRightBottomRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_normalRightBottomRadius, 0)
+            mNormalRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_normalRadius, 0)
+            mNormalLeftPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_normalLeftPadding, 0)
+            mNormalTopPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_normalTopPadding, 0)
+            mNormalRightPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_normalRightPadding, 0)
+            mNormalBottomPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_normalBottomPadding, 0)
+            mNormalPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_normalPadding, 0)
+            mNormalColor = typedArray.getColor(R.styleable.Shape_normalColor, 0)
+            mNormalStrokeColor = typedArray.getColor(R.styleable.Shape_normalStrokeColor, 0)
+            mNormalStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.Shape_normalStrokeWidth, 0)
+            mNormalDashWidth = typedArray.getDimensionPixelSize(R.styleable.Shape_normalDashWidth, 0)
+            mNormalDashGap = typedArray.getDimensionPixelSize(R.styleable.Shape_normalDashGap, 0)
+
+            mPressedLeftTopRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedLeftTopRadius, 0)
+            mPressedRightTopRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedRightTopRadius, 0)
+            mPressedLeftBottomRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedLeftBottomRadius, 0)
+            mPressedRightBottomRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedRightBottomRadius, 0)
+            mPressedRadius = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedRadius, 0)
+            mPressedLeftPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedLeftPadding, 0)
+            mPressedTopPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedTopPadding, 0)
+            mPressedRightPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedRightPadding, 0)
+            mPressedBottomPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedBottomPadding, 0)
+            mPressedPadding = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedPadding, 0)
+            mPressedColor = typedArray.getColor(R.styleable.Shape_pressedColor, 0)
+            mPressedStrokeColor = typedArray.getColor(R.styleable.Shape_pressedStrokeColor, 0)
+            mPressedStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedStrokeWidth, 0)
+            mPressedDashWidth = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedDashWidth, 0)
+            mPressedDashGap = typedArray.getDimensionPixelSize(R.styleable.Shape_pressedDashGap, 0)
+            
+            typedArray.recycle()
+        }
+        setShape()
     }
 
     override fun setNormalLeftTopRadius(radius: Int) {

@@ -2,19 +2,24 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="#FF1"
         tools:context=".MainActivity"
         android:gravity="center"
         android:orientation="vertical">
 
-    <com.don.frame.widget.layout.ShapeLinearLayout
+    <com.don.frame.widget.button.ShapeButton
             android:id="@+id/mLayoutContainer"
             android:layout_width="200dip"
             android:orientation="vertical"
             android:layout_height="200dip"
             android:padding="20dip"
+            app:normalColor="#FF0000"
+            app:normalLeftTopRadius="20dip"
+            app:pressedColor="#00FF00"
+            app:pressedRightTopRadius="20dip"
             android:background="#FFFFFF">
-    </com.don.frame.widget.layout.ShapeLinearLayout>
+    </com.don.frame.widget.button.ShapeButton>
 
 </LinearLayout>

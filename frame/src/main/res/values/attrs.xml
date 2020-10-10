@@ -42,4 +42,37 @@
         <attr name="outlineInsetBottom" format="dimension"/>
         <attr name="outlineExcludePadding" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="Shape">
+        <attr name="normalLeftTopRadius" format="dimension"/>
+        <attr name="normalRightTopRadius" format="dimension"/>
+        <attr name="normalLeftBottomRadius" format="dimension"/>
+        <attr name="normalRightBottomRadius" format="dimension"/>
+        <attr name="normalRadius" format="dimension"/>
+        <attr name="normalLeftPadding" format="dimension"/>
+        <attr name="normalTopPadding" format="dimension"/>
+        <attr name="normalRightPadding" format="dimension"/>
+        <attr name="normalBottomPadding" format="dimension"/>
+        <attr name="normalPadding" format="dimension"/>
+        <attr name="normalColor" format="color|reference"/>
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="normalStrokeWidth" format="dimension"/>
+        <attr name="normalDashWidth" format="dimension"/>
+        <attr name="normalDashGap" format="dimension"/>
+        <attr name="pressedLeftTopRadius" format="dimension"/>
+        <attr name="pressedRightTopRadius" format="dimension"/>
+        <attr name="pressedLeftBottomRadius" format="dimension"/>
+        <attr name="pressedRightBottomRadius" format="dimension"/>
+        <attr name="pressedRadius" format="dimension"/>
+        <attr name="pressedLeftPadding" format="dimension"/>
+        <attr name="pressedTopPadding" format="dimension"/>
+        <attr name="pressedRightPadding" format="dimension"/>
+        <attr name="pressedBottomPadding" format="dimension"/>
+        <attr name="pressedPadding" format="dimension"/>
+        <attr name="pressedColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension"/>
+        <attr name="pressedDashWidth" format="dimension"/>
+        <attr name="pressedDashGap" format="dimension"/>
+    </declare-styleable>
 </resources>

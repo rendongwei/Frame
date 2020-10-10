@@ -1,13 +1,13 @@
-package com.don.frame.widget.textview
+package com.don.frame.widget.edittext
 
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import android.widget.TextView
+import android.widget.EditText
 import com.don.frame.widget.helper.LayoutHelper
 import com.don.frame.widget.interfaces.ILayout
 
-open class DTextView : TextView, ILayout {
+open class DEditText : EditText, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 

@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import com.don.frame.widget.helper.ShapeHelper
 import com.don.frame.widget.interfaces.IShape
 
-class ShapeLinearLayout : DLinearLayout, IShape {
+class ShapeRelativeLayout : DRelativeLayout, IShape {
 
     private var mShapeHelper: ShapeHelper
 
