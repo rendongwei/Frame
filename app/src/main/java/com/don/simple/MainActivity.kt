@@ -6,6 +6,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseStatusBarActivity() {
 
+    private var a: ((i: Int) -> Unit)? = null
     override fun getContentView(): Int {
         return R.layout.activity_main
     }
@@ -17,6 +18,5 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
-
     }
 }
