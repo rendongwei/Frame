@@ -47,20 +47,26 @@ fun RecyclerView.initGridLayoutManager(
     }
 }
 
-fun RecyclerView.addDecoration(rect: Rect) {
-    addItemDecoration(DividerItemDecoration {
-        rect
-    })
+fun RecyclerView.addItemDecoration(rect: Rect): RecyclerView {
+    return apply {
+        addItemDecoration(DividerItemDecoration {
+            rect
+        })
+    }
 }
 
-fun RecyclerView.addDecoration(left: Int = 0, top: Int = 0, right: Int, bottom: Int) {
-    addItemDecoration(DividerItemDecoration {
-        Rect(left, top, right, bottom)
-    })
+fun RecyclerView.addItemDecoration(left: Int = 0, top: Int = 0, right: Int, bottom: Int): RecyclerView {
+    return apply {
+        addItemDecoration(DividerItemDecoration {
+            Rect(left, top, right, bottom)
+        })
+    }
 }
 
-fun RecyclerView.addDecoration(listener: ((position: Int) -> Rect)) {
-    addItemDecoration(DividerItemDecoration(listener))
+fun RecyclerView.addItemDecoration(listener: ((position: Int) -> Rect)): RecyclerView {
+    return apply {
+        addItemDecoration(DividerItemDecoration(listener))
+    }
 }
 
 class DividerItemDecoration constructor(@NonNull var mListener: ((position: Int) -> Rect)) :
