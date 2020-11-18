@@ -24,14 +24,8 @@ fun RecyclerView.removeDefaultAnimator(): RecyclerView {
     }
 }
 
-fun RecyclerView.initLinearLayoutManager(
-    orientation: Int = RecyclerView.VERTICAL,
-    itemDecoration: DividerItemDecoration? = null
-): RecyclerView {
+fun RecyclerView.initLinearLayoutManager(orientation: Int = RecyclerView.VERTICAL): RecyclerView {
     return apply {
-        itemDecoration?.let {
-            addItemDecoration(itemDecoration)
-        }
         var manager = MyLinearLayoutManager(context)
         manager.orientation = orientation
         manager.isSmoothScrollbarEnabled = true
@@ -41,13 +35,9 @@ fun RecyclerView.initLinearLayoutManager(
 
 fun RecyclerView.initGridLayoutManager(
     spanCount: Int = 1,
-    spanSizeLookup: GridLayoutManager.SpanSizeLookup? = null,
-    itemDecoration: DividerItemDecoration? = null
+    spanSizeLookup: GridLayoutManager.SpanSizeLookup? = null
 ): RecyclerView {
     return apply {
-        itemDecoration?.let {
-            addItemDecoration(itemDecoration)
-        }
         var manager = GridLayoutManager(context, spanCount)
         manager.isSmoothScrollbarEnabled = true
         spanSizeLookup?.let {
@@ -55,6 +45,22 @@ fun RecyclerView.initGridLayoutManager(
         }
         layoutManager = manager
     }
+}
+
+fun RecyclerView.addDecoration(rect: Rect) {
+    addItemDecoration(DividerItemDecoration {
+        rect
+    })
+}
+
+fun RecyclerView.addDecoration(left: Int = 0, top: Int = 0, right: Int, bottom: Int) {
+    addItemDecoration(DividerItemDecoration {
+        Rect(left, top, right, bottom)
+    })
+}
+
+fun RecyclerView.addDecoration(listener: ((position: Int) -> Rect)) {
+    addItemDecoration(DividerItemDecoration(listener))
 }
 
 class DividerItemDecoration constructor(@NonNull var mListener: ((position: Int) -> Rect)) :

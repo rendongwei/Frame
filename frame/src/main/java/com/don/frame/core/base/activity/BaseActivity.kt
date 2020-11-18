@@ -1,9 +1,12 @@
 package com.don.frame.core.base.activity
 
 import android.content.Context
+import android.content.pm.ActivityInfo
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import com.don.frame.extend.layout
@@ -32,11 +35,22 @@ abstract class BaseActivity : AppCompatActivity() {
         return null
     }
 
+    open fun noChangeScreenOrientation(): Boolean {
+        return false
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ActivityManager.getInstance().addActivity(this)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         mSaveInstanceState = savedInstanceState
+
+        if (!noChangeScreenOrientation()) {
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+        }
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.navigationBarColor = Color.WHITE
+
         setContentView(mContentView)
 
         initListener()

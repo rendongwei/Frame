@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -211,8 +212,36 @@ class ActivityManager private constructor() {
     }
 
     //  跳转市场
-    fun intentToMarket(context: Context, packageName: String) {
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")))
+    fun intentToMarket(context: Context) {
+        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=${context.packageName}")))
+    }
+
+    // 跳转到通知列表
+    fun intentToNotification(context: Context) {
+        val intent = Intent()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            intent.action = Settings.ACTION_APP_NOTIFICATION_SETTINGS
+            intent.putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
+            intent.putExtra("app_package", context.packageName)
+            intent.putExtra("app_uid", context.applicationInfo.uid)
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            intent.addCategory(Intent.CATEGORY_DEFAULT)
+            intent.data = Uri.parse("package:" + context.packageName)
+        } else {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            if (Build.VERSION.SDK_INT >= 9) {
+                intent.action = "android.settings.APPLICATION_DETAILS_SETTINGS"
+                intent.data = Uri.fromParts("package", context.packageName, null)
+            } else if (Build.VERSION.SDK_INT <= 8) {
+                intent.action = Intent.ACTION_VIEW
+                intent.setClassName("com.android.settings", "com.android.setting.InstalledAppDetails")
+                intent.putExtra("com.android.settings.ApplicationPkgName", context.packageName)
+            }
+        }
+        context.startActivity(intent)
     }
 
     // 打电话
@@ -259,4 +288,15 @@ class ActivityManager private constructor() {
         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("$websit")))
     }
 
+    // 跳转到允许安装外部程序
+    fun intentToAllowInstall(activity: AppCompatActivity, requestCode: Int) {
+        val intent = Intent()
+        intent.data = Uri.parse("package:${activity.packageName}")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            intent.action = Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES
+        } else {
+            intent.action = Settings.ACTION_SECURITY_SETTINGS
+        }
+        activity.startActivityForResult(intent, requestCode)
+    }
 }
