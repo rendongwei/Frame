@@ -1,22 +1,20 @@
 package com.don.simple
 
 import android.content.Context
-import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import com.don.frame.core.base.adapter.BaseAdapter
-import com.don.frame.extend.layout
+import android.view.View
+import com.don.frame.core.base.adapter.SimpleAdapter
 import kotlinx.android.synthetic.main.fragment_main.view.*
 
-class A(context: Context, list: MutableList<String>?) : BaseAdapter<String>(context, list) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ItemViewHolder(mContext.layout(R.layout.fragment_main, parent, false))
+class A(context: Context, list: MutableList<String>?) : SimpleAdapter<String>(context, list) {
+
+    override fun getContentView(): Int {
+        return R.layout.fragment_main
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        with(holder.itemView) {
-            getItem(position)?.apply {
-                textview.text = this
-            }
+    override fun bindView(view: View, position: Int, t: String) {
+        with(view) {
+            textview.text = t
         }
     }
+
 }

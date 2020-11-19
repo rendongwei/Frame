@@ -122,6 +122,10 @@ object DateUtil {
             return null
         }
         var simpleDateFormat = SimpleDateFormat(format)
-        return simpleDateFormat.parse(date)?.time
+        try {
+            return simpleDateFormat.parse(date)?.time
+        } catch (e: Exception) {
+        }
+        return null
     }
 }
