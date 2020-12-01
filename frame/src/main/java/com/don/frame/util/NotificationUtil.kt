@@ -9,6 +9,7 @@ import com.don.frame.manager.ActivityManager
 
 object NotificationUtil {
 
+    // 通知是否开启
     @TargetApi(Build.VERSION_CODES.KITKAT)
     fun isNotificationEnabled(context: Context): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -40,10 +41,12 @@ object NotificationUtil {
         return false
     }
 
+    // 跳转到系统通知
     fun intentToNotification(context: Context) {
         ActivityManager.getInstance().intentToNotification(context)
     }
 
+    // 创建通道组
     fun createChannelGroup(context: Context, id: String, name: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -51,6 +54,7 @@ object NotificationUtil {
         }
     }
 
+    // 删除通道组
     fun deleteChannelGroup(context: Context, id: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -58,6 +62,7 @@ object NotificationUtil {
         }
     }
 
+    // 创建通道
     fun createChannel(
         context: Context, id: String, name: String, description: String,
         groupId: String? = null,
@@ -83,6 +88,7 @@ object NotificationUtil {
         }
     }
 
+    // 删除通道
     fun deleteChannel(context: Context, id: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

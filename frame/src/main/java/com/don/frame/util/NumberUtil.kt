@@ -1,7 +1,7 @@
 package com.don.frame.util
 
+import java.math.BigDecimal
 import java.text.DecimalFormat
-import java.text.NumberFormat
 
 object NumberUtil {
 
@@ -44,5 +44,11 @@ object NumberUtil {
     fun formatDecimal(value: Float, num: Int): String {
         var num = constrain(num, 0, num)
         return String.format("%.${num}f", value)
+    }
+
+    // 保留小数四舍五入格式化
+    fun formatDecimalRoundHalfUp(value: Double, num: Int): Double {
+        var num = constrain(num, 0, num)!!
+        return BigDecimal(value).setScale(num, BigDecimal.ROUND_HALF_UP).toDouble()
     }
 }
