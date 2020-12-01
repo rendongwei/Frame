@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 object BroadcastReceiverUtil {
 
+    // 注册广播
     fun register(activity: AppCompatActivity?, broadcastReceiver: BroadcastReceiver, vararg actions: String) {
         var intentFilter = IntentFilter()
         actions.forEach {
@@ -14,6 +15,7 @@ object BroadcastReceiverUtil {
         activity?.registerReceiver(broadcastReceiver, intentFilter)
     }
 
+    // 注销广播
     fun unregister(activity: AppCompatActivity?, broadcastReceiver: BroadcastReceiver) {
         activity?.unregisterReceiver(broadcastReceiver)
     }

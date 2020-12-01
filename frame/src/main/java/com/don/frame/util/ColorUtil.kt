@@ -8,6 +8,7 @@ import com.don.frame.extend.constrain
 
 object ColorUtil {
 
+    // 颜色是否为亮色
     fun isLightColor(@ColorRes color: Int): Boolean {
         val darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255
         if (darkness < 0.5) {
@@ -16,11 +17,13 @@ object ColorUtil {
         return false
     }
 
+    // 设置颜色透明度
     fun setColorAlpha(@ColorInt color: Int, alpha: Float, override: Boolean = true): Int {
         val origin = if (override) 0xff else color shr 24 and 0xff
         return color and 0x00ffffff or ((alpha * origin) as Int shl 24)
     }
 
+    // 获取两个颜色中间颜色(0.0f~1.0f)
     fun computeColor(@ColorInt fromColor: Int, @ColorInt toColor: Int, fraction: Float): Int {
         var fraction = fraction.constrain(0.0f, 1.0f)!!
 
@@ -44,6 +47,7 @@ object ColorUtil {
         return Color.argb(resultAlpha, resultRed, resultGreen, resultBlue)
     }
 
+    // 颜色转字符串
     fun colorToString(@ColorInt color: Int): String {
         return String.format("#%08X", color)
     }

@@ -19,6 +19,7 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
+        println(Math.ceil(1111.02215545))
         mLvDisplay.initLinearLayoutManager().addItemDecoration(20.toDip(), 20.toDip(), 20.toDip(), 20.toDip()).adapter =
             ListenerAdapter(
                 mContext,

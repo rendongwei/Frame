@@ -71,40 +71,49 @@ object DeviceUtil {
         return version == mMiuiVersionName
     }
 
+    // 是否魅族
     fun isMeizu(): Boolean {
         return isPhone(MEIZUBOARD) || isFlyme()
     }
 
+    // 是否小米
     fun isXiaomi(): Boolean {
         return Build.MANUFACTURER.toLowerCase() == "xiaomi"
     }
 
+    // 是否vivo
     fun isVivo(): Boolean {
         return BRAND.contains("vivo") || BRAND.contains("bbk")
     }
 
+    // 是否oppo
     fun isOppo(): Boolean {
         return BRAND.contains("oppo")
     }
 
+    // 是否华为
     fun isHuawei(): Boolean {
         return BRAND.contains("huawei") || BRAND.contains("honor")
     }
 
+    // 是否爱立信
     fun isEssentialPhone(): Boolean {
         return BRAND.contains("essential")
     }
 
+    // 是否ZUKZ1
     fun isZUKZ1(): Boolean {
         val board = Build.MODEL
         return board != null && board.toLowerCase().contains(ZUKZ1)
     }
 
+    // 是否ZTKC2016
     fun isZTKC2016(): Boolean {
         val board = Build.MODEL
         return board != null && board.toLowerCase().contains(ZTEC2016)
     }
 
+    // 是否是手机
     private fun isPhone(boards: Array<String>): Boolean {
         val board = Build.BOARD ?: return false
         for (board1 in boards) {
