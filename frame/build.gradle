@@ -33,11 +33,10 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
 
     implementation rootProject.ext.supportLibs
     implementation rootProject.ext.networkLibs
+    implementation rootProject.ext.kotlinLibs
     implementation rootProject.ext.rxJavaLibs
     implementation rootProject.ext.otherLibs
     kapt rootProject.ext.annotationProcessorLibs

@@ -9,13 +9,13 @@ ext {
     ]
 
     dependVersion = [
-            glideSdkVersion         : "4.8.0",
-            rxjavaSdkVersion        : "2.x.x",
-            rxandroidSdkVersion     : "2.1.0",
-            retrofitSdkVersion      : "2.3.0",
-            gsonSdkVersion          : "2.6.2",
-            dagger2SdkVersion       : "2.11",
-            loggerSdkVersion        : "2.2.0",
+            glideSdkVersion    : "4.8.0",
+            rxjavaSdkVersion   : "2.x.x",
+            rxandroidSdkVersion: "2.1.0",
+            retrofitSdkVersion : "2.9.0",
+            gsonSdkVersion     : "2.6.2",
+            dagger2SdkVersion  : "2.11",
+            loggerSdkVersion   : "2.2.0",
     ]
 
     supports = [
@@ -28,6 +28,15 @@ ext {
             core       : "androidx.legacy:legacy-support-core-utils:1.0.0",
     ]
 
+
+    kotlins = [
+            coreKTX              : "androidx.core:core-ktx:1.3.0",
+            coroutinesCore       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1",
+            coroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1",
+            lifecycleExtensions  : "androidx.lifecycle:lifecycle-extensions:2.1.0",
+            lifecycleViewModelKTX: "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
+    ]
+
     rxJava = [
             rxJava   : "io.reactivex.rxjava2:rxjava:$dependVersion.rxjavaSdkVersion",
             rxAndroid: "io.reactivex.rxjava2:rxandroid:$dependVersion.rxandroidSdkVersion",
@@ -38,8 +47,8 @@ ext {
             retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:$dependVersion.retrofitSdkVersion",
             retrofitAdapterRxjava2  : "com.squareup.retrofit2:adapter-rxjava2:$dependVersion.retrofitSdkVersion",
             retrofitConverterScalars: "com.squareup.retrofit2:converter-scalars:2.0.0",
-            okhttp3LoggerInterceptor: "com.squareup.okhttp3:logging-interceptor:3.4.1",
-            okhttp3                 : "com.squareup.okhttp3:okhttp:3.4.1",
+            okhttp3LoggerInterceptor: "com.squareup.okhttp3:logging-interceptor:4.2.0",
+            okhttp3                 : "com.squareup.okhttp3:okhttp:4.2.0",
     ]
 
     glide = "com.github.bumptech.glide:glide:$dependVersion.glideSdkVersion"
@@ -59,6 +68,7 @@ ext {
 
     supportLibs = supports.values()
     networkLibs = retrofit.values()
+    kotlinLibs = kotlins.values()
     rxJavaLibs = rxJava.values()
     otherLibs = [glide, gson, dagger2, logger, statusBar, eventBus]
     annotationProcessorLibs = [glideCompiler, daggerCompiler]

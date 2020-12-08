@@ -33,6 +33,19 @@ open class BaseHttpManager {
             .build()
     }
 
+    protected fun createCoroutineRetrofit(
+        baseUrl: String,
+        client: OkHttpClient = createHttpClient(),
+        converterFactory: Converter.Factory = GsonConverterFactory.create(createGson())
+    ): Retrofit {
+        return Retrofit
+            .Builder()
+            .baseUrl(baseUrl)
+            .client(client)
+            .addConverterFactory(converterFactory)
+            .build()
+    }
+
     protected fun createHttpClient(): OkHttpClient {
         var loggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger {
             LogUtil.log(TAG, it)

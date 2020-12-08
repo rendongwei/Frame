@@ -1,13 +1,19 @@
 package com.don.simple
 
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LifecycleObserver
 import com.don.frame.core.base.activity.BaseStatusBarActivity
 import com.don.frame.core.base.adapter.ListenerAdapter
 import com.don.frame.extend.addItemDecoration
 import com.don.frame.extend.initLinearLayoutManager
 import com.don.frame.extend.toDip
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import java.util.concurrent.CountDownLatch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class MainActivity : BaseStatusBarActivity() {
 
@@ -20,21 +26,6 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun init() {
-
-        var c = CountDownLatch(2)
-
-        Thread{
-            Thread.sleep(10000)
-            println(1)
-            c.countDown()
-
-            Thread.sleep(10000)
-            println(2)
-            c.countDown()
-        }.start()
-
-        c.await()
-
         mLvDisplay.initLinearLayoutManager().addItemDecoration(20.toDip(), 20.toDip(), 20.toDip(), 20.toDip()).adapter =
             ListenerAdapter(
                 mContext,
@@ -45,5 +36,21 @@ class MainActivity : BaseStatusBarActivity() {
                     textview.text = t
                 }
             }
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                var json = JsonObject()
+                json.addProperty("phone", "15063080813")
+                var user = Http.getInstance().mService.login(json)
+                println(user.status)
+            }
+        }
+    }
+
+}
+
+
+class ViewM :AndroidViewModel(AppManager.getInstance().mApplication), LifecycleObserver {
+    fun a(){
+        
     }
 }
