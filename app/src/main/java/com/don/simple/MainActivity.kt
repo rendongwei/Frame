@@ -1,7 +1,9 @@
 package com.don.simple
 
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.don.frame.core.base.activity.BaseStatusBarActivity
 import com.don.frame.core.base.adapter.ListenerAdapter
 import com.don.frame.extend.addItemDecoration
@@ -11,7 +13,6 @@ import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -36,7 +37,17 @@ class MainActivity : BaseStatusBarActivity() {
                     textview.text = t
                 }
             }
-        GlobalScope.launch {
+        var viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ViewM::class.java)
+        lifecycle.addObserver(viewModel)
+        viewModel.login()
+    }
+}
+
+
+class ViewM : ViewModel(), LifecycleObserver {
+
+    fun login() {
+        viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 var json = JsonObject()
                 json.addProperty("phone", "15063080813")
@@ -44,13 +55,5 @@ class MainActivity : BaseStatusBarActivity() {
                 println(user.status)
             }
         }
-    }
-
-}
-
-
-class ViewM :AndroidViewModel(AppManager.getInstance().mApplication), LifecycleObserver {
-    fun a(){
-        
     }
 }
