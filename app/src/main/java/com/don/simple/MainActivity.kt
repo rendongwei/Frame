@@ -1,19 +1,18 @@
 package com.don.simple
 
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import android.content.Context
 import com.don.frame.core.base.activity.BaseStatusBarActivity
 import com.don.frame.core.base.adapter.ListenerAdapter
+import com.don.frame.core.base.viewmodel.BaseViewModel
 import com.don.frame.extend.addItemDecoration
 import com.don.frame.extend.initLinearLayoutManager
+import com.don.frame.extend.showToast
 import com.don.frame.extend.toDip
-import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 class MainActivity : BaseStatusBarActivity() {
@@ -23,11 +22,15 @@ class MainActivity : BaseStatusBarActivity() {
     }
 
     override fun initListener() {
-
+        m.setOnClickListener {
+        }
     }
 
     override fun init() {
-        mLvDisplay.initLinearLayoutManager().addItemDecoration(20.toDip(), 20.toDip(), 20.toDip(), 20.toDip()).adapter =
+//        m.setRadiusAndShadow(8.toDip(), ILayout.HIDE_RADIUS_SIDE_NONE, 20, color("#Ff00fF"), 1.0f)
+
+        mLvDisplay.initLinearLayoutManager()
+            .addItemDecoration(20.toDip(), 20.toDip(), 20.toDip(), 20.toDip()).adapter =
             ListenerAdapter(
                 mContext,
                 R.layout.fragment_main,
@@ -37,22 +40,24 @@ class MainActivity : BaseStatusBarActivity() {
                     textview.text = t
                 }
             }
-        var viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(ViewM::class.java)
-        lifecycle.addObserver(viewModel)
-        viewModel.login()
+        createViewModel(ViewM::class.java).login(mContext)
     }
 }
 
+class ViewM : BaseViewModel() {
 
-class ViewM : ViewModel(), LifecycleObserver {
-
-    fun login() {
-        viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                var json = JsonObject()
-                json.addProperty("phone", "15063080813")
-                var user = Http.getInstance().mService.login(json)
-                println(user.status)
+    fun login(context: Context) {
+        launch {
+            var a = async {
+                delay(20000)
+                "哈哈"
+            }
+            var b = async {
+                delay(10000)
+                "你好"
+            }
+            withContext(Dispatchers.Main) {
+                context.showToast(a.await() + b.await())
             }
         }
     }

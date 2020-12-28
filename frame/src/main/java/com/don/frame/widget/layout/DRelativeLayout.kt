@@ -4,18 +4,29 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import android.widget.RelativeLayout
 import com.don.frame.widget.helper.LayoutHelper
 import com.don.frame.widget.interfaces.ILayout
 
-open class DRelativeLayout : FrameLayout, ILayout {
+open class DRelativeLayout : RelativeLayout, ILayout {
 
     private var mLayoutHelper: LayoutHelper
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : this(
+        context,
+        attrs,
+        defStyleAttr,
+        0
+    )
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(
         context!!,
         attrs,
         defStyleAttr,
@@ -110,7 +121,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         mLayoutHelper.setRadiusAndShadow(radius, shadowElevation, shadowAlpha)
     }
 
-    override fun setRadiusAndShadow(radius: Int, hideRadiusSide: Int, shadowElevation: Int, shadowAlpha: Float) {
+    override fun setRadiusAndShadow(
+        radius: Int,
+        hideRadiusSide: Int,
+        shadowElevation: Int,
+        shadowAlpha: Float
+    ) {
         mLayoutHelper.setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, shadowAlpha)
     }
 
@@ -121,7 +137,13 @@ open class DRelativeLayout : FrameLayout, ILayout {
         shadowColor: Int,
         shadowAlpha: Float
     ) {
-        mLayoutHelper.setRadiusAndShadow(radius, hideRadiusSide, shadowElevation, shadowColor, shadowAlpha)
+        mLayoutHelper.setRadiusAndShadow(
+            radius,
+            hideRadiusSide,
+            shadowElevation,
+            shadowColor,
+            shadowAlpha
+        )
     }
 
     override fun setBorderColor(borderColor: Int) {
@@ -132,8 +154,18 @@ open class DRelativeLayout : FrameLayout, ILayout {
         mLayoutHelper.setBorderWidth(borderWidth)
     }
 
-    override fun updateTopDivider(topInsetLeft: Int, topInsetRight: Int, topDividerHeight: Int, topDividerColor: Int) {
-        mLayoutHelper.updateTopDivider(topInsetLeft, topInsetRight, topDividerHeight, topDividerColor)
+    override fun updateTopDivider(
+        topInsetLeft: Int,
+        topInsetRight: Int,
+        topDividerHeight: Int,
+        topDividerColor: Int
+    ) {
+        mLayoutHelper.updateTopDivider(
+            topInsetLeft,
+            topInsetRight,
+            topDividerHeight,
+            topDividerColor
+        )
     }
 
     override fun updateBottomDivider(
@@ -142,7 +174,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         bottomDividerHeight: Int,
         bottomDividerColor: Int
     ) {
-        mLayoutHelper.updateBottomDivider(bottomInsetLeft, bottomInsetRight, bottomDividerHeight, bottomDividerColor)
+        mLayoutHelper.updateBottomDivider(
+            bottomInsetLeft,
+            bottomInsetRight,
+            bottomDividerHeight,
+            bottomDividerColor
+        )
     }
 
     override fun updateLeftDivider(
@@ -151,7 +188,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         leftDividerWidth: Int,
         leftDividerColor: Int
     ) {
-        mLayoutHelper.updateLeftDivider(leftInsetTop, leftInsetBottom, leftDividerWidth, leftDividerColor)
+        mLayoutHelper.updateLeftDivider(
+            leftInsetTop,
+            leftInsetBottom,
+            leftDividerWidth,
+            leftDividerColor
+        )
     }
 
     override fun updateRightDivider(
@@ -160,7 +202,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         rightDividerWidth: Int,
         rightDividerColor: Int
     ) {
-        mLayoutHelper.updateRightDivider(rightInsetTop, rightInsetBottom, rightDividerWidth, rightDividerColor)
+        mLayoutHelper.updateRightDivider(
+            rightInsetTop,
+            rightInsetBottom,
+            rightDividerWidth,
+            rightDividerColor
+        )
     }
 
     override fun onlyShowTopDivider(
@@ -169,7 +216,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         topDividerHeight: Int,
         topDividerColor: Int
     ) {
-        mLayoutHelper.onlyShowTopDivider(topInsetLeft, topInsetRight, topDividerHeight, topDividerColor)
+        mLayoutHelper.onlyShowTopDivider(
+            topInsetLeft,
+            topInsetRight,
+            topDividerHeight,
+            topDividerColor
+        )
     }
 
     override fun onlyShowBottomDivider(
@@ -178,7 +230,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         bottomDividerHeight: Int,
         bottomDividerColor: Int
     ) {
-        mLayoutHelper.onlyShowBottomDivider(bottomInsetLeft, bottomInsetRight, bottomDividerHeight, bottomDividerColor)
+        mLayoutHelper.onlyShowBottomDivider(
+            bottomInsetLeft,
+            bottomInsetRight,
+            bottomDividerHeight,
+            bottomDividerColor
+        )
     }
 
     override fun onlyShowLeftDivider(
@@ -187,7 +244,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         leftDividerWidth: Int,
         leftDividerColor: Int
     ) {
-        mLayoutHelper.onlyShowLeftDivider(leftInsetTop, leftInsetBottom, leftDividerWidth, leftDividerColor)
+        mLayoutHelper.onlyShowLeftDivider(
+            leftInsetTop,
+            leftInsetBottom,
+            leftDividerWidth,
+            leftDividerColor
+        )
     }
 
     override fun onlyShowRightDivider(
@@ -196,7 +258,12 @@ open class DRelativeLayout : FrameLayout, ILayout {
         rightDividerWidth: Int,
         rightDividerColor: Int
     ) {
-        mLayoutHelper.onlyShowRightDivider(rightInsetTop, rightInsetBottom, rightDividerWidth, rightDividerColor)
+        mLayoutHelper.onlyShowRightDivider(
+            rightInsetTop,
+            rightInsetBottom,
+            rightDividerWidth,
+            rightDividerColor
+        )
     }
 
     override fun setTopDividerAlpha(dividerAlpha: Int) {
