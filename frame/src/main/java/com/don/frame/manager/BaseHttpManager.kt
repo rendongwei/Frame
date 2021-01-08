@@ -4,6 +4,7 @@ import com.don.frame.gson.*
 import com.don.frame.util.LogUtil
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.ConnectionPool
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,6 +44,7 @@ open class BaseHttpManager {
             .baseUrl(baseUrl)
             .client(client)
             .addConverterFactory(converterFactory)
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
     }
 
