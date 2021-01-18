@@ -9,8 +9,6 @@ import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.don.frame.core.base.viewmodel.BaseViewModel
 import com.don.frame.extend.layout
 import com.don.frame.manager.ActivityManager
 import kotlinx.coroutines.CoroutineScope
@@ -65,11 +63,5 @@ abstract class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope()
     override fun onDestroy() {
         cancel()
         super.onDestroy()
-    }
-
-    protected fun <T : BaseViewModel> createViewModel(cls: Class<T>): T {
-        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(cls)
-        lifecycle.addObserver(viewModel)
-        return viewModel
     }
 }

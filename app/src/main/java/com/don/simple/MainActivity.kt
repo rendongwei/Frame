@@ -1,19 +1,14 @@
 package com.don.simple
 
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
 import com.don.frame.core.base.activity.BaseStatusBarActivity
 import com.don.frame.core.base.adapter.ListenerAdapter
-import com.don.frame.core.base.viewmodel.BaseViewModel
 import com.don.frame.extend.addItemDecoration
 import com.don.frame.extend.initLinearLayoutManager
-import com.don.frame.extend.showToast
 import com.don.frame.extend.toDip
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.withContext
 
 class MainActivity : BaseStatusBarActivity() {
 
@@ -42,23 +37,18 @@ class MainActivity : BaseStatusBarActivity() {
             }
         createViewModel(ViewM::class.java).login(mContext)
     }
+
+    protected fun <T : BaseViewModel> createViewModel(cls: Class<T>): T {
+        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(cls)
+        lifecycle.addObserver(viewModel)
+        return viewModel
+    }
 }
 
 class ViewM : BaseViewModel() {
 
     fun login(context: Context) {
-        launch {
-            var a = async {
-                delay(20000)
-                "哈哈"
-            }
-            var b = async {
-                delay(10000)
-                "你好"
-            }
-            withContext(Dispatchers.Main) {
-                context.showToast(a.await() + b.await())
-            }
-        }
+
     }
 }
+
