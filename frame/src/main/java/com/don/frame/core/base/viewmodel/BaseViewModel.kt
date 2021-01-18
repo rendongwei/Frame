@@ -2,15 +2,19 @@ package com.don.frame.core.base.viewmodel
 
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.*
 
 open class BaseViewModel : ViewModel(), LifecycleObserver {
 
+    private val mViewModelJob = SupervisorJob()
+    private val mViewModelScope = CoroutineScope(Dispatchers.Main + mViewModelJob)
+
     fun launch(block: suspend CoroutineScope.() -> Unit): Job {
-        return viewModelScope.launch(Dispatchers.IO) {
+        return mViewModelScope.launch {
             try {
-                block()
+                withContext(Dispatchers.IO) {
+                    block()
+                }
             } catch (e: Exception) {
             }
         }
@@ -18,6 +22,6 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
 
     override fun onCleared() {
         super.onCleared()
-        viewModelScope.cancel()
+        mViewModelScope.cancel()
     }
 }
