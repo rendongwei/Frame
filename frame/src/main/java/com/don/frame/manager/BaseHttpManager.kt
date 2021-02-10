@@ -13,6 +13,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.reflect.Modifier
+import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
 open class BaseHttpManager {
@@ -59,6 +60,7 @@ open class BaseHttpManager {
             .addInterceptor(loggingInterceptor)
             .connectTimeout(1, TimeUnit.MINUTES)
             .connectionPool(ConnectionPool(20, 5, TimeUnit.MINUTES))
+            .proxy(Proxy.NO_PROXY)
             .build()
     }
 
