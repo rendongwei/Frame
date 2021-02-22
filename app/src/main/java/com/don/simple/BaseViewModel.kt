@@ -26,6 +26,7 @@ open class BaseViewModel : ViewModel(), LifecycleObserver {
                     error()
                 }
             } catch (e: Exception) {
+                e.printStackTrace()
                 error()
             }
         }
